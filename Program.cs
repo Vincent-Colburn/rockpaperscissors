@@ -22,9 +22,9 @@ namespace rockpaperscissors
         string computerChoice = "";
 
         Dictionary<String, String> howToWin = new Dictionary<String, String> {
-            {"rock", "paper"},
-            {"scissors", "rock"},
-            {"paper", "scissors"}
+            {"paper", "rock"},
+            {"rock", "scissors"},
+            {"scissors", "paper"}
         };
 
         bool running = true; 
@@ -33,6 +33,8 @@ namespace rockpaperscissors
             
             computerChoice = compChoices[rand.Next(compChoices.Count)];
             Console.WriteLine(computerChoice);
+            Console.WriteLine("Computer Wins:" + "" + compWins);
+            Console.WriteLine("Player Wins:" + "" + playerWins);
             Console.WriteLine(@"Welcome to Rock, Paper, Scissors! Type rock to play rock, Type scissors to play scissors, and paper to player paper");
         // ConsoleKeyInfo playerChoice = Console.ReadKey();        
            string myChoice = Console.ReadLine().ToLower(); 
@@ -50,7 +52,7 @@ namespace rockpaperscissors
                Console.WriteLine("You win!");
                playerWins++;
            }
-           else if (howToWin[computerChoice].Contains(myChoice))
+           else
            {
               Console.WriteLine("You chose...... poorly");
               compWins ++;
