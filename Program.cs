@@ -20,13 +20,12 @@ namespace rockpaperscissors
         int playerWins = 0;
         int compWins = 0;
         string computerChoice = "";
-        string myChoice;
 
-        // Dictionary<String, String> theWin = new Dictionary<String, String> {
-        //     {"rock", "paper"},
-        //     {"scissors", "rock"},
-        //     {"paper", "scissors"}
-        // };
+        Dictionary<String, String> howToWin = new Dictionary<String, String> {
+            {"rock", "paper"},
+            {"scissors", "rock"},
+            {"paper", "scissors"}
+        };
 
         bool running = true; 
         while (running)
@@ -36,15 +35,33 @@ namespace rockpaperscissors
             Console.WriteLine(computerChoice);
             Console.WriteLine(@"Welcome to Rock, Paper, Scissors! Type rock to play rock, Type scissors to play scissors, and paper to player paper");
         // ConsoleKeyInfo playerChoice = Console.ReadKey();        
-            Console.ReadLine().ToLower(); 
+           string myChoice = Console.ReadLine().ToLower(); 
         Console.Clear();
 
 
-        if (playerChoice.Key == ConsoleKey.R)
+        if (howToWin.ContainsKey(myChoice))
         {
-            myChoice = "rock";
+           if (myChoice == computerChoice)
+           {
+               Console.WriteLine("draw!");
+           }
+           else if (howToWin[myChoice].Contains(computerChoice))
+           {
+               Console.WriteLine("You win!");
+               playerWins++;
+           }
+           else if (howToWin[computerChoice].Contains(myChoice))
+           {
+              Console.WriteLine("You chose...... poorly");
+              compWins ++;
+           }
         }
-        Console.Write("player choice" + myChoice );
+
+
+
+
+
+        // Console.Write("player choice" + myChoice );
         // else if (playerChoice.Key == ConsoleKey.S)
         // {
         //     Console.WriteLine("Scissors!");
